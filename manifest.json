@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Subir Notas - EducarEcuador",
+  "version": "2.0.0",
+  "description": "Sube calificaciones a EducarEcuador desde tu Excel/CSV emparejando por cedula o nombre. Todo local; el login lo haces tu.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [],
+  "host_permissions": [
+    "https://academico.educarecuador.gob.ec/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://academico.educarecuador.gob.ec/academico-servicios/pages/calificacion_ordinaria*"
+      ],
+      "js": ["vendor/xlsx.full.min.js", "content.js"],
+      "css": ["panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.css"],
+      "matches": ["https://academico.educarecuador.gob.ec/*"]
+    }
+  ]
+}
